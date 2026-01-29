@@ -10,6 +10,18 @@
             <table>
                 <tr>
                     <td>
+                        <p>Background:</p>
+                        <select id="backgroundList">
+                            <option value="placeholder">Placeholder</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p>Level:</p>
+                        <input type="number" id="level" max="20" min="1" placeholder="1" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <p>Species:</p>
                         <select id="speciesList">
                             <option value="dragonborn">Dragonborn</option>
@@ -43,21 +55,23 @@
                         </select>
                     </td>
                 </tr>
+            </table>
+        </div>
+        <div id="subBasics">
+            <h1>Placeholder</h1>
+            <table>
                 <tr>
                     <td>
-                        <p>Background:</p>
-                        <select id="backgroundList">
-                            <option value="placeholder">Placeholder</option>
+                        <p>Subspecies</p>
+                        <select id="subspeciesList">
+                            <option value="placeholder"></option>
+                            <option class="subspeciesHuman" value="standardHuman">Standard Human</option>
+                            <option class="subspeciesHuman" value="variantHuman">Variant Human</option>
                         </select>
-                    </td>
-                    <td>
-                        <p>Level:</p>
-                        <input type="number" id="level" max="20" min="1">
                     </td>
                 </tr>
             </table>
         </div>
-
         <div id="abilitys">
             <h1>Abilitys</h1>
             <Table>
@@ -93,23 +107,22 @@
                         <input type="number" name="textBoxCharisma" id="textBoxCharisma" placeholder="Charisma" max="20" min="1"></td>
                 </tr>
             </Table>
-            <input class="calculateButton" type="submit" name="calculateButton" id="calculateButton" value="Calculate">
-            <input class="rollButton" type="submit" name="rollButton" id="rollButton" value="Roll">
+            <div id="abilityButtons">
+                <input class="calculateButton" type="submit" name="calculateButton" id="calculateButton" value="Calculate">
+                <input class="rollButton" type="submit" name="rollButton" id="rollButton" value="Roll">
+            </div>
         </div>
         <div id="buttons">
             <input class="continueButton" type="submit" name="continueButton" id="continueButton" value="Continue">
             <input class="backButton" type="submit" name="backButton" id="backButton" value="Back">
-
         </div>
     </body>
 </html>
 
 
 <script>
-    document.getElementById('abilitys').style.display = 'none';
-    document.getElementById('backButton').style.display = 'none'
-
     var progress = 1;
+    var abilityScoreImprovements = 0;
     var dice1 = 0;
     var dice2 = 0;
     var dice3 = 0;
@@ -151,7 +164,6 @@
         Charisma: document.querySelector('#textBoxCharisma')
     }
     
-
                 // Function of the Calculate Button
         calculateButton.addEventListener('click', function (event) 
         {
@@ -210,6 +222,7 @@
             }
         })
 
+                //Function of the roll buton
         rollButton.addEventListener('click', function(event){
             if(textBox.Strength.value.length == 0){
                 {
@@ -281,12 +294,15 @@
                 saved.Background = liste.Background.value
                 saved.Level = liste.Level.value
                 document.getElementById('characterBasics').style.display = 'none'
-                document.getElementById('abilitys').style.display = 'flex'
+                document.getElementById('subBasics').style.display = 'flex'
                 document.getElementById('backButton').style.display = 'flex'
-                //document.getElementById('continueButton').style.marginTop = '-17.25px'
                 progress = 2
             }
             if (progress == 2){
+                document.getElementById('abilitys').style.display = 'flex'
+                progress = 3
+            }
+            if (progress == 3){
                     saved.Strength = textBox.Strength.value
                     saved.Dexterity = textBox.Dexterity.value
                     saved.Constitution = textBox.Constitution.value
@@ -299,10 +315,14 @@
                 //Function of the back button
         backButton.addEventListener('click', function(event){
             if(progress == 2){
-                document.getElementById('abilitys').style.display = 'none'
-                document.getElementById('characterBasics').style.display = 'flex'
                 document.getElementById('backButton').style.display = 'none'
+                document.getElementById('characterBasics')
                 progress = 1
+            }
+            if(progress == 3){
+                document.getElementById('abilitys').style.display = 'none'
+                document.getElementById('subBasics').style.display = 'flex'
+                progress = 2
             }
         })
 </script> 
