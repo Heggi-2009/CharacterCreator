@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <link rel="stylesheet" href="CCAStyle.css">
+    </head>
+    <body>
+        <div id="1">
+            Hallo
+        </div>
+
+        <div id="2">
+            Tschüss
+        </div>
+
+        <div id="3">
+            Test
+        </div>
+        <input type="submit" value="Weiter" id="continueButton">
+        <input type="submit" value="Zurück" id="backButton">
+    </body>
+</html>
+
+<script>
+    document.getElementById('2').style.display = 'none';
+    document.getElementById('3').style.display = 'none';
+
+    var progress = 1;
+    var continueButton = document.getElementById('continueButton');
+    var backButton = document.getElementById('backButton');
+    
+    
+    continueButton.addEventListener('click', function(event){
+        if(progress == 1){
+            document.getElementById('1').style.display = 'none';
+            document.getElementById('2').style.display = 'block';
+            progress = 2
+        }
+        else{
+            if(progress == 2){
+            document.getElementById('2').style.display = 'none';
+            document.getElementById('3').style.display = 'block';
+            progress = 3
+            }   
+        }
+    })
+
+    backButton.addEventListener('click', function(event){
+        if(progress == 2){
+            
+        }
+    })
+</script>

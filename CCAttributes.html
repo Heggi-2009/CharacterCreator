@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Character Creator</title>
+        <link rel="stylesheet" href="CCAStyle.css">
+    </head>
+    <body>
+        <div id="characterBasics">
+            <h1>The Basics</h1>
+            <table>
+                <tr>
+                    <td>
+                        <p>Species:</p>
+                        <select id="speciesList">
+                            <option value="dragonborn">Dragonborn</option>
+                            <option value="dwarf">Dwarf</option>
+                            <option value="elf">Elf</option>
+                            <option value="gnome">Gnome</option>
+                            <option value="halfElf">Half Elf</option>
+                            <option value="halfOrc">Half Orc</option>
+                            <option value="halfling">Halfling</option>
+                            <option value="human">Human</option>
+                            <option value="tiefling">Tiefling</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p>Class:</p>
+                        <select id="classList">
+                            <option value="artificer">Artificer</option>
+                            <option value="barbarian">Barbarian</option>
+                            <option value="bard">Bard</option>
+                            <option value="bloodHunter">Blood Hunter</option>
+                            <option value="cleric">Cleric</option>
+                            <option value="druid">Druid</option>
+                            <option value="fighter">Fighter</option>
+                            <option value="monk">Monk</option>
+                            <option value="paladin">Paladin</option>
+                            <option value="ranger">Ranger</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="sorcerer">Sorcerer</option>
+                            <option value="warlock">Warlock</option>
+                            <option value="wizard">Wizard</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Background:</p>
+                        <select id="backgroundList">
+                            <option value="placeholder">Placeholder</option>
+                        </select>
+                    </td>
+                    <td>
+                        <p>Level:</p>
+                        <input type="number" id="level" max="20" min="1">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="abilitys">
+            <h1>Abilitys</h1>
+            <Table>
+                <tr>
+                
+                    <td>
+                        <p>Strength: </p> 
+                        <h6 id="outputStrength">Modifier</h6> 
+                        <input type="number" name="textBoxStrength" id="textBoxStrength" placeholder="Strength" max="20" min="1"></td>
+                    <td>
+                        <p>Dexterity: </p>
+                        <h6 id="outputDexterity">Modifier</h6>
+                        <input type="number" name="textBoxDexterity" id="textBoxDexterity" placeholder="Dexterity" max="20" min="1"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Constitution: </p>
+                        <h6 id="outputConstitution">Modifier</h6>
+                        <input type="number" name="textBoxConstitution" id="textBoxConstitution" placeholder="Constitution" max="20" min="1"></td>
+                    <td>
+                        <p>Wisdom: </p>
+                        <h6 id="outputWisdom">Modifier</h6>
+                        <input type="number" name="textBoxWisdom" id="textBoxWisdom" placeholder="Wisdom" max="20" min="1"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Intelligence: </p>
+                        <h6 id="outputIntelligence">Modifier</h6>
+                        <input type="number" name="textBoxIntelligence" id="textBoxIntelligence" placeholder="Intelligence"  max="20" min="1"></td>
+                    <td>
+                        <p>Charisma: </p>
+                        <h6 id="outputCharisma">Modifier</h6>
+                        <input type="number" name="textBoxCharisma" id="textBoxCharisma" placeholder="Charisma" max="20" min="1"></td>
+                </tr>
+            </Table>
+            <input class="calculateButton" type="submit" name="calculateButton" id="calculateButton" value="Calculate">
+            <input class="rollButton" type="submit" name="rollButton" id="rollButton" value="Roll">
+        </div>
+        <div id="buttons">
+            <input class="continueButton" type="submit" name="continueButton" id="continueButton" value="Continue">
+            <input class="backButton" type="submit" name="backButton" id="backButton" value="Back">
+
+        </div>
+    </body>
+</html>
+
+
+<script>
+    document.getElementById('abilitys').style.display = 'none';
+    document.getElementById('backButton').style.display = 'none'
+
+    var progress = 1;
+    var dice1 = 0;
+    var dice2 = 0;
+    var dice3 = 0;
+    var dice4 = 0;
+    var result = 0;
+    var calculateButton = document.getElementById('calculateButton');
+    var continueButton = document.getElementById('continueButton');
+    var rollButton = document.getElementById('rollButton');
+    var backButton = document.getElementById('backButton');
+    var saved = {
+                    Species: "",
+                    Class: "",
+                    Background: "",
+                    Level: 0,
+                    Strength: "",
+                    Dexterity: "",
+                    Constitution: "",
+                    Wisdom: "",
+                    Intelligence: "",
+                    Charisma: ""
+                }
+    
+
+                //Input Basics gets converted into a String
+    var liste = {
+        Species: document.getElementById('speciesList'),
+        Class: document.getElementById('classList'),
+        Background: document.getElementById('backgroundList'),
+        Level: document.getElementById('level')
+    }
+
+                //Input Abilitys gets converted into a String
+    var textBox = {
+        Strength: document.querySelector('#textBoxStrength'),
+        Dexterity: document.querySelector('#textBoxDexterity'),
+        Constitution: document.querySelector('#textBoxConstitution'),
+        Wisdom: document.querySelector('#textBoxWisdom'),
+        Intelligence: document.querySelector('#textBoxIntelligence'),
+        Charisma: document.querySelector('#textBoxCharisma')
+    }
+    
+
+                // Function of the Calculate Button
+        calculateButton.addEventListener('click', function (event) 
+        {
+            if (textBox.Dexterity.value >=0 && textBox.Strength.value.length > 0 && textBox.Dexterity.value <= 20)
+            {
+                document.getElementById('outputStrength').innerHTML = Math.floor(textBox.Strength.value / 2 - 5);
+            }
+            else
+            {
+                document.getElementById('outputStrength').innerHTML = "Modifier";
+            }
+                
+            if (textBox.Dexterity.value >=0 && textBox.Dexterity.value.length > 0 && textBox.Dexterity.value <= 20)
+            {
+                document.getElementById('outputDexterity').innerHTML = Math.floor(textBox.Dexterity.value / 2 - 5);
+            }
+            else
+            {
+                document.getElementById('outputDexterity').innerHTML = "Modifier";
+            }
+
+            if (textBox.Constitution.value >=0 && textBox.Constitution.value.length > 0 && textBox.Constitution.value <= 20)
+            {
+                document.getElementById('outputConstitution').innerHTML = Math.floor(textBox.Constitution.value / 2 - 5);
+            } 
+            else
+            {
+                document.getElementById('outputConstitution').innerHTML = "Modifier";
+            }
+
+            if (textBox.Wisdom.value >=0 && textBox.Wisdom.value.length > 0 && textBox.Wisdom.value <= 20)
+            {
+                document.getElementById('outputWisdom').innerHTML = Math.floor(textBox.Wisdom.value / 2 - 5);
+            }
+            else
+            {
+                document.getElementById('outputWisdom').innerHTML = "Modifier";
+            }
+
+            if (textBox.Intelligence.value >=0 && textBox.Intelligence.value.length > 0 && textBox.Intelligence.value <= 20)
+            {
+                document.getElementById('outputIntelligence').innerHTML = Math.floor(textBox.Intelligence.value / 2 - 5);
+            }
+            else
+            {
+                document.getElementById('outputIntelligence').innerHTML = "Modifier";
+            }
+
+            if (textBox.Charisma.value >=0 && textBox.Charisma.value.length > 0 && textBox.Charisma.value <= 20)
+            {
+                document.getElementById('outputCharisma').innerHTML = Math.floor(textBox.Charisma.value / 2 - 5);
+            }
+            else
+            {
+                document.getElementById('outputCharisma').innerHTML = "Modifier";
+            }
+        })
+
+        rollButton.addEventListener('click', function(event){
+            if(textBox.Strength.value.length == 0){
+
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Strength.value = result
+            }
+        })
+
+                //Function of the continue button
+        continueButton.addEventListener('click', function (event){
+            if (progress == 1){
+                saved.Species = liste.Species.value
+                saved.Class = liste.Class.value
+                saved.Background = liste.Background.value
+                saved.Level = liste.Level.value
+                document.getElementById('characterBasics').style.display = 'none'
+                document.getElementById('abilitys').style.display = 'flex'
+                document.getElementById('backButton').style.display = 'flex'
+                //document.getElementById('continueButton').style.marginTop = '-17.25px'
+                progress = 2
+            }
+            if (progress == 2){
+                    saved.Strength = textBox.Strength.value
+                    saved.Dexterity = textBox.Dexterity.value
+                    saved.Constitution = textBox.Constitution.value
+                    saved.Wisdom = textBox.Wisdom.value
+                    saved.Intelligence = textBox.Intelligence.value
+                    saved.Charisma = textBox.Charisma.value
+            }
+        })
+
+                //Function of the back button
+        backButton.addEventListener('click', function(event){
+            if(progress == 2){
+                document.getElementById('abilitys').style.display = 'none'
+                document.getElementById('characterBasics').style.display = 'flex'
+                document.getElementById('backButton').style.display = 'none'
+                progress = 1
+            }
+        })
+</script> 
