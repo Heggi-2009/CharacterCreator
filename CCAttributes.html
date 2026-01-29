@@ -212,7 +212,6 @@
 
         rollButton.addEventListener('click', function(event){
             if(textBox.Strength.value.length == 0){
-
                 {
                 dice1 = Math.floor(Math.random() * (7-1)+1)
                 dice2 = Math.floor(Math.random() * (7-1)+1)
@@ -221,6 +220,56 @@
                 result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
                 } 
                 textBox.Strength.value = result
+            }
+            if(textBox.Dexterity.value.length == 0){
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Dexterity.value = result
+            }
+            if(textBox.Constitution.value.length == 0){
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Constitution.value = result
+            }
+            if(textBox.Wisdom.value.length == 0){
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Wisdom.value = result
+            }
+            if(textBox.Intelligence.value.length == 0){
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Intelligence.value = result
+            }
+            if(textBox.Charisma.value.length == 0){
+                {
+                dice1 = Math.floor(Math.random() * (7-1)+1)
+                dice2 = Math.floor(Math.random() * (7-1)+1)
+                dice3 = Math.floor(Math.random() * (7-1)+1)
+                dice4 = Math.floor(Math.random() * (7-1)+1)
+                result = dice1 + dice2 + dice3 + dice4 - Math.min(dice1, dice2, dice3, dice4)
+                } 
+                textBox.Charisma.value = result
             }
         })
 
