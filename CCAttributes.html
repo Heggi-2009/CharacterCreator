@@ -64,9 +64,19 @@
                     <td>
                         <p>Subspecies</p>
                         <select id="subspeciesList">
-                            <option value="placeholder"></option>
+                            <option  class="placeholder" disabled selected></option>
                             <option class="subspeciesHuman" value="standardHuman">Standard Human</option>
                             <option class="subspeciesHuman" value="variantHuman">Variant Human</option>
+                            <option class="subspeciesDwarf" value="hillDwarf">Hill Dwarf</option>
+                            <option class="subspeciesDwarf" value="mountainDwarf">Mountain Dwarf</option>
+                            <option class="subspeciesElf" value="darkElf">Dark Elf</option>
+                            <option class="subspeciesElf" value="highElf">High Elf</option>
+                            <option class="subspeciesElf" value="woodElf">Wood Elf</option>
+                            <option class="subspeciesGnome" value="forestGnome">Forest Gnome</option>
+                            <option class="subspeciesGnome" value="rockGnome">Rock Gnome</option>
+                            <option class="subspeciesHalfling" value="lightfootHalfling">Lightfoot Halfling</option>
+                            <option class="subspeciesHalfling" value="stoutHalfling">Stout Halfling</option>
+                            <option class="subspeciesTiefling" value="bloodlineOfAsmodeusTiefling">Bloodline Of Asmodeus</option>
                         </select>
                     </td>
                 </tr>
@@ -122,6 +132,8 @@
 
 <script>
     var progress = 1;
+    var subspeciesAmount = 0;
+    var subspeciesCounter = 0;
     var abilityScoreImprovements = 0;
     var dice1 = 0;
     var dice2 = 0;
@@ -293,30 +305,83 @@
                 saved.Class = liste.Class.value
                 saved.Background = liste.Background.value
                 saved.Level = liste.Level.value
+
+                if(saved.Species == "human"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesHuman')[subspeciesCounter].style.display = 'block'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "dwarf"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesDwarf')[subspeciesCounter].style.display = 'block'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "elf"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 3
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesElf')[subspeciesCounter].style.display = 'block'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "gnome"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesGnome')[subspeciesCounter].style.display = 'block'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "halfling"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesHalfling')[subspeciesCounter].style.display = 'block'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "tiefling"){
+                        document.getElementsByClassName('subspeciesTiefling')[subspeciesCounter].style.display = 'block'
+                    }
+
                 document.getElementById('characterBasics').style.display = 'none'
                 document.getElementById('subBasics').style.display = 'flex'
                 document.getElementById('backButton').style.display = 'flex'
                 progress = 2
             }
-            if (progress == 2){
-                document.getElementById('abilitys').style.display = 'flex'
-                progress = 3
+            else{
+                if (progress == 2){
+                    document.getElementById('subBasics').style.display = 'none'
+                    document.getElementById('abilitys').style.display = 'flex'
+                    progress = 3
+                }
+                else{
+                    if (progress == 3){
+                        saved.Strength = textBox.Strength.value
+                        saved.Dexterity = textBox.Dexterity.value
+                        saved.Constitution = textBox.Constitution.value
+                        saved.Wisdom = textBox.Wisdom.value
+                        saved.Intelligence = textBox.Intelligence.value
+                        saved.Charisma = textBox.Charisma.value
+                    }
+                }
             }
-            if (progress == 3){
-                    saved.Strength = textBox.Strength.value
-                    saved.Dexterity = textBox.Dexterity.value
-                    saved.Constitution = textBox.Constitution.value
-                    saved.Wisdom = textBox.Wisdom.value
-                    saved.Intelligence = textBox.Intelligence.value
-                    saved.Charisma = textBox.Charisma.value
-            }
+            
+            
         })
 
                 //Function of the back button
         backButton.addEventListener('click', function(event){
             if(progress == 2){
                 document.getElementById('backButton').style.display = 'none'
-                document.getElementById('characterBasics')
+                document.getElementById('subBasics').style.display = 'none'
+                document.getElementById('characterBasics').style.display = 'flex'
                 progress = 1
             }
             if(progress == 3){
