@@ -71,7 +71,8 @@ select{
     height: 18px;
 }
 
-.subspeciesHuman, .subspeciesElf, .subspeciesGnome, .subspeciesDwarf, .subspeciesHalfling, .subspeciesTiefling, #abilitys, #backButton, #subBasics{
+.subspeciesHuman, .subspeciesElf, .subspeciesGnome, .subspeciesDwarf, .subspeciesHalfling, .subspeciesTiefling, .subclassArtificer,
+ #abilitys, #backButton, #subBasics{
     display: none;
 }
 
