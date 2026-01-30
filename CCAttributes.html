@@ -306,6 +306,8 @@
                 saved.Background = liste.Background.value
                 saved.Level = liste.Level.value
 
+                //Subspecies options
+                {
                 if(saved.Species == "human"){
                     subspeciesCounter = 0
                     subspeciesAmount = 2
@@ -348,8 +350,8 @@
                 }
                 if(saved.Species == "tiefling"){
                         document.getElementsByClassName('subspeciesTiefling')[subspeciesCounter].style.display = 'block'
-                    }
-
+                }}
+                
                 document.getElementById('characterBasics').style.display = 'none'
                 document.getElementById('subBasics').style.display = 'flex'
                 document.getElementById('backButton').style.display = 'flex'
@@ -379,6 +381,51 @@
                 //Function of the back button
         backButton.addEventListener('click', function(event){
             if(progress == 2){
+
+                if(saved.Species == "human"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesHuman')[subspeciesCounter].style.display = 'none'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "dwarf"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesDwarf')[subspeciesCounter].style.display = 'none'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "elf"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 3
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesElf')[subspeciesCounter].style.display = 'none'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "gnome"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesGnome')[subspeciesCounter].style.display = 'none'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "halfling"){
+                    subspeciesCounter = 0
+                    subspeciesAmount = 2
+                    while(subspeciesCounter != subspeciesAmount){
+                        document.getElementsByClassName('subspeciesHalfling')[subspeciesCounter].style.display = 'none'
+                        subspeciesCounter++
+                    }
+                }
+                if(saved.Species == "tiefling"){
+                        document.getElementsByClassName('subspeciesTiefling')[subspeciesCounter].style.display = 'none'
+                }
+                document.getElementsByClassName('placeholder')[0].setAttribute = 'selected', true
                 document.getElementById('backButton').style.display = 'none'
                 document.getElementById('subBasics').style.display = 'none'
                 document.getElementById('characterBasics').style.display = 'flex'
